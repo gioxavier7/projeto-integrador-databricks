@@ -1,0 +1,14 @@
+﻿Indicador,Bronze,Silver,Diferença,Interpretação
+Registros,5634,5634,0,Nenhum registro excluído: todos os tratamentos foram feitos sem perder clientes.
+Colunas,23,24,1,Uma coluna de controle adicionada (TotalCharges_imputado) para identificar valores preenchidos.
+Valores nulos,278,20,-258,"Na Silver, os 'unknown' passaram a ser nulos (+19) e 277 nulos de TotalCharges foram preenchidos."
+Valores 'unknown' em tenure,19,0,-19,Todos convertidos em nulo explícito: a ausência agora é visível para qualquer ferramenta.
+Total de valores ausentes,297,20,-277,"Redução real de ausências; restam 19 em tenure e 1 em TotalCharges, mantidas por falta de base para estimar."
+Registros com algum valor ausente,296,19,-277,Restam apenas os 19 clientes sem tenure (um deles também sem TotalCharges).
+Linhas duplicadas,0,0,0,Não havia duplicidades; nada a tratar.
+customerID duplicados,0,0,0,Chave íntegra nas duas camadas.
+Colunas com tipagem incorreta,2,0,-2,tenure (texto -> inteiro) e SeniorCitizen (0/1 -> Yes/No) corrigidas.
+Valores com grafia inconsistente,70,0,-70,Os 70 valores de PhoneService foram padronizados.
+Violações de regras confirmadas,129,0,-129,"Todas resolvidas (R02, R06 e R09)."
+Situações suspeitas registradas,48,48,0,Mantidas de propósito (R12 e R13): não há evidência de erro para corrigir.
+Valores imputados,0,277,277,"Valores estimados, e não observados: devem ser considerados nas análises (coluna de controle)."

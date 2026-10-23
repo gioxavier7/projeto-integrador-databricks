@@ -6,11 +6,20 @@ Solução integrada para estruturar, processar, armazenar e analisar os dados de
 
 ```
 bases/
-  history.csv                     # base oficial fornecida pelo professor (não alterar)
+  history.csv                     # camada Bronze: base oficial do professor (não alterar)
+  silver/
+    base_silver.csv               # camada Silver: base tratada e validada (gerada pelo notebook 02)
+docs/
+  dicionario_dados.csv            # dicionário de dados atualizado (Silver)
+  relatorio_qualidade_bronze_silver.csv  # indicadores de qualidade Bronze x Silver
+  registro_tratamentos.csv        # tratamentos aplicados, justificativas e impactos
 notebooks/
-  01_exploracao_inicial.ipynb     # Etapa 1: exploração, qualidade e dicionário de dados
+  01_exploracao_inicial.ipynb     # Semanas 1–2: exploração, qualidade e dicionário de dados
+  02_tratamento_silver.ipynb      # Semana 3: tratamento e validação da camada Silver
 requirements.txt                  # bibliotecas Python utilizadas
 ```
+
+Os arquivos de `bases/silver/` e `docs/` são gerados ao executar o notebook 02. Para ler a Silver mantendo `tenure` como inteiro com nulos, use `pd.read_csv(caminho, dtype={"tenure": "Int64"})`.
 
 ## Como executar
 
@@ -24,14 +33,14 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Abra `notebooks/01_exploracao_inicial.ipynb` no VS Code ou Jupyter, selecione o kernel do `.venv` e execute todas as células. O notebook lê a base pelo caminho relativo `../bases/history.csv`.
+Abra os notebooks da pasta `notebooks/` no VS Code ou Jupyter, selecione o kernel do `.venv` e execute todas as células, em ordem (01 e depois 02). Os notebooks leem a base pelo caminho relativo `../bases/history.csv`.
 
 ## Etapas do projeto
 
 | Semana | Etapa | Status |
 |---|---|---|
-| 01–02 | Conhecimento dos dados, qualidade e dicionário | Em andamento |
-| 03 | Processamento e Arquitetura Medalhão | Pendente |
+| 01–02 | Conhecimento dos dados, qualidade e dicionário | Finalizado |
+| 03 | Processamento e Arquitetura Medalhão | Em andamento |
 | 04 | Armazenamento e consultas SQL | Pendente |
 | 05–06 | Análise exploratória e relações com o cancelamento | Pendente |
 | 07 | Integração, documentação e revisão | Pendente |
