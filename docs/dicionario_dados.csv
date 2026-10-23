@@ -1,0 +1,25 @@
+﻿coluna,tipo_bronze,tipo_silver,tipo_conceitual,dominio,nulos,pct_nulos,valores_unicos,descricao,tratamento_silver,confianca
+customerID,str,str,texto,texto livre / identificador,0,0.0,5634,Identificador do cliente (chave primária),Nenhum; integridade validada (R01),Alta
+gender,str,str,texto,"Female, Male",0,0.0,2,Gênero do cliente,Nenhum; domínio validado,Alta
+SeniorCitizen,int64,str,texto,"No, Yes",0,0.0,2,Indica se o cliente é idoso,0/1 convertido para No/Yes,Média
+Partner,str,str,texto,"No, Yes",0,0.0,2,Indica se o cliente possui parceiro(a),Nenhum; domínio validado,Média
+Dependents,str,str,texto,"No, Yes",0,0.0,2,Indica se o cliente possui dependentes,Nenhum; domínio validado,Média
+tenure,str,Int64,inteiro,0 a 72,19,0.34,73,"Tempo de relacionamento, provavelmente em meses",'unknown' -> nulo; texto -> inteiro (Int64),Média
+PhoneService,str,str,texto,"No, Yes",0,0.0,2,Possui serviço de telefone,'yes'/'no' padronizados para 'Yes'/'No',Alta
+MultipleLines,str,str,texto,"No, No phone service, Yes",0,0.0,3,Possui múltiplas linhas telefônicas,Nenhum; coerência com PhoneService validada (R06),Alta
+InternetService,str,str,texto,"DSL, Fiber optic, No",0,0.0,3,Tipo de internet contratada,Nenhum; domínio validado,Alta
+OnlineSecurity,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: segurança online,Nenhum; coerência validada (R07),Média
+OnlineBackup,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: backup online,Nenhum; coerência validada (R07),Média
+DeviceProtection,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: proteção de dispositivo,Nenhum; coerência validada (R07),Média
+TechSupport,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: suporte técnico,Nenhum; coerência validada (R07),Média
+StreamingTV,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: streaming de TV,Nenhum; coerência validada (R07),Média
+StreamingMovies,str,str,texto,"No, No internet service, Yes",0,0.0,3,Serviço adicional: streaming de filmes,Nenhum; coerência validada (R07),Média
+Contract,str,str,texto,"Month-to-month, One year, Two year",0,0.0,3,Tipo de contrato,Nenhum; domínio validado,Alta
+PaperlessBilling,str,str,texto,"No, Yes",0,0.0,2,Recebe fatura digital (sem papel),Nenhum; domínio validado,Média
+PaymentMethod,str,str,texto,"Bank transfer (automatic), Credit card (automatic), Electronic check, Mailed check",0,0.0,4,Forma de pagamento,Nenhum; domínio validado,Alta
+MonthlyCharges,float64,float64,decimal,18.4 a 118.65,0,0.0,1490,Valor cobrado por mês (provavelmente em dólar),Nenhum; validado (R03),Média
+TotalCharges,float64,float64,decimal,0.0 a 8684.8,1,0.02,5285,Valor total cobrado durante o relacionamento,Nulos: 0 se tenure = 0; tenure x MonthlyCharges se tenure > 0; 1 nulo mantido,Média
+TotalCharges_imputado,(não existe),bool,booleano,"True, False",0,0.0,2,Coluna de controle: True se TotalCharges foi preenchido na Silver,Criada na Silver,Alta
+Churn,str,str,texto,"No, Yes",0,0.0,2,Situação de cancelamento,Nenhum; domínio validado (R08),Alta
+CustomerFeedback,str,str,texto,texto livre / identificador,0,0.0,5634,Comentário em texto do cliente,Nenhum; texto preservado sem alterações,Média
+MonthlyIncome,int64,int64,inteiro,100 a 9993,0,0.0,4307,Renda mensal (pelo nome); unidade e titular não determinados,Nenhum; 1 caso suspeito registrado (R13),Baixa

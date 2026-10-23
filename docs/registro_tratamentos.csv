@@ -1,0 +1,8 @@
+﻿etapa,coluna,problema,registros_afetados,decisao,justificativa,impacto
+1. Tipagem,tenure,Valor 'unknown' impedia o tipo numérico,19,'unknown' convertido em nulo; coluna convertida para inteiro (Int64),Estimativa por TotalCharges/MonthlyCharges acerta ~50% e geraria 3 valores acima do máximo (72),19 nulos em tenure; nenhum registro excluído
+2. Ausentes,TotalCharges,Nulo em cliente com tenure = 0,10,Preenchido com 0 e marcado em TotalCharges_imputado,Sem mês completo não há valor acumulado; tenure x MonthlyCharges = 0,Nulos estruturais eliminados; valores identificáveis pela coluna de controle
+2. Ausentes,TotalCharges,Nulo em cliente com tenure > 0,267,Preenchido com tenure x MonthlyCharges (2 casas) e marcado em TotalCharges_imputado,Relação exata no 1º mês; erro mediano de 2.0% no teste com valores conhecidos,"Valores estimados, não observados; identificáveis pela coluna de controle"
+2. Ausentes,TotalCharges,Nulo em cliente com tenure também nulo,1,Mantido nulo,Sem tenure não há base para estimar,1 nulo remanescente; registro mantido
+3. Duplicidades,customerID,Verificação de duplicidades e integridade da chave,0,Nenhuma remoção necessária,"Sem linhas ou IDs duplicados, sem nulos e 100% no padrão",Nenhum registro removido
+3. Padronização,PhoneService,Valores 'yes' e 'no' em minúsculas,70,Convertidos para 'Yes' e 'No',Mesmo significado escrito de forma diferente; cria categorias falsas,Categorias reduzidas de 4 para 2; nenhum nulo criado
+3. Padronização,SeniorCitizen,"Booleano codificado como 0/1, diferente das demais colunas (Yes/No)",5634,0 -> 'No' e 1 -> 'Yes',Padrão único para colunas booleanas de negócio; 5 de 6 já usavam Yes/No,Tipo passa de inteiro para texto; contagens preservadas
